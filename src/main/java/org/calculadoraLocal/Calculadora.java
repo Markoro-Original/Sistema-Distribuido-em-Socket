@@ -6,16 +6,35 @@ public class Calculadora {
     int[] nums = new int[20];
     int count;
 
-    void recebeNums(){
-        Scanner scan = new Scanner(System.in);
+    int menuOps() {
+        Scanner menu = new Scanner(System.in);
 
-        System.out.print("Informe até 20 números\n-> ");
-        String[] numeros = scan.nextLine().split(" ");
+        System.out.println("|******** Escolha uma operação ********|");
+        System.out.println("|--------------------------------------|");
+        System.out.println("| Adição - Digite \"Somar\"              |");
+        System.out.println("| Subtração - Digite \"Subtrair\"        |");
+        System.out.println("| Multiplicação - Digite \"Multiplicar\" |");
+        System.out.println("| Divisão - Digite \"Dividir\"           |");
+        System.out.println("| Finalizar calculadora - Digite \"Fim\" |");
+        System.out.println("|--------------------------------------|");
+        System.out.print("Informe a operação desejada: ");
 
-        count = numeros.length;
+        String ops = menu.next();
 
-        for(int i = 0; i < count; i++){
-            nums[i] = Integer.parseInt(numeros[i]);
+        switch (ops) {
+            case "Somar":
+                return 1;
+            case "Subtrair":
+                return 2;
+            case "Multiplicar":
+                return 3;
+            case "Dividir":
+                return 4;
+            case "Fim":
+                return -1;
+            default:
+                System.out.println("Opção inválida.");
+                return 0;
         }
     }
 
@@ -57,19 +76,57 @@ public class Calculadora {
         return Integer.toString(result);
     }
 
+    void recebeNums(int idOps){
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("Informe até 20 números\n-> ");
+        String[] numeros = scan.nextLine().trim().split("\\s+");
+
+        if(numeros.length > 20){
+            System.out.println("A quantidade de números excedeu 20. Apenas os 20 primeiros números serão calculados.");
+            count = 20;
+        }else{
+            count = numeros.length;
+        }
+
+        for(int i = 0; i < count; i++){
+            nums[i] = Integer.parseInt(numeros[i]);
+        }
+
+        switch (idOps) {
+            case 1:
+                System.out.println("\nResultado adição: " + soma());
+                break;
+            case 2:
+                System.out.println("\nResultado subtração: " + subtrai());
+                break;
+            case 3:
+                System.out.println("\nResultado multiplicação: " + multiplica());
+                break;
+            case 4:
+                System.out.println("\nResultado divisão: " + divide());
+                break;
+        }
+    }
+
 }
 class Main {
     public static void main(String[] args) {
 
         Calculadora cal = new Calculadora();
+        int idOps;
 
-        cal.recebeNums();
+        while (true) {
+            idOps = cal.menuOps();
 
-        for (int i = 0; i < cal.count; i++) System.out.print(cal.nums[i] + " ");
+            if(idOps == -1){
+                System.out.println("Finalizando calculadora.");
+                break;
+            }
 
-        System.out.println("\nResultado soma: " + cal.soma());
-        System.out.println("Resultado subtração: " + cal.subtrai());
-        System.out.println("Resultado multiplicação: " + cal.multiplica());
-        System.out.println("Resultado divisão: " + cal.divide());
+            if(idOps != 0){
+                cal.recebeNums(idOps);
+            }
+        }
     }
 }
