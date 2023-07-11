@@ -12,15 +12,19 @@ class Calculadora {
     int[] nums = new int[20];
     int count;
     Socket socket;
+    ObjectOutputStream oos;
+    ObjectInputStream ois;
 
-    Calculadora(Socket socket){
+    Calculadora(Socket socket, ObjectOutputStream oos,
+    ObjectInputStream ois){
         this.socket = socket;
+        this.oos = oos;
+        this.ois = ois;
     }
 
     int menuOps() {
 
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
             oos.writeObject("|******** Escolha uma operação ********|");
             oos.writeObject("|--------------------------------------|");
@@ -32,7 +36,6 @@ class Calculadora {
             oos.writeObject("|--------------------------------------|");
             oos.writeObject("Informe a operação desejada: ");
 
-            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
             String ops = (String) ois.readObject();
 
             //ois.close();
@@ -89,7 +92,6 @@ class Calculadora {
 
     String divide(){
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
             for (int i = 1; i < count; i++) {
                 if (nums[i] == 0) {
@@ -115,11 +117,9 @@ class Calculadora {
 
     void recebeNums(int idOps){
         try {
-            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
 
             oos.writeObject("Informe até 20 números -> ");
 
-            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
             String string = (String) ois.readObject();
 
             String[] numeros = string.trim().split("\\s+");
@@ -174,17 +174,20 @@ class ConnectionHandler implements Runnable{
     }
     @Override
     public void run() {
-        //try {
-            Calculadora calculadora = new Calculadora(socket);
+        try {
+            ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream());
+            ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
+
+            Calculadora calculadora = new Calculadora(socket, oos, ois);
             int ops;
             ops = calculadora.menuOps();
             calculadora.recebeNums(ops);
 
 
-            /*socket.close();
+            //socket.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }*/
+        }
     }
 }
 public class ServerSocketCalculadora {
