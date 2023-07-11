@@ -26,7 +26,7 @@ class Calculadora {
 
         try {
 
-            oos.writeObject("|******** Escolha uma operação ********|");
+            oos.writeObject("\n|******** Escolha uma operação ********|");
             oos.writeObject("|--------------------------------------|");
             oos.writeObject("| Adição - Digite \"Somar\"              |");
             oos.writeObject("| Subtração - Digite \"Subtrair\"        |");
@@ -36,10 +36,8 @@ class Calculadora {
             oos.writeObject("|--------------------------------------|");
             oos.writeObject("Informe a operação desejada: ");
 
-            String ops = (String) ois.readObject();
-
-            //ois.close();
-            //oos.close();
+            String string = (String) ois.readObject();
+            String ops = string.trim();
 
             switch (ops) {
                 case "Somar":
@@ -53,7 +51,6 @@ class Calculadora {
                 case "Fim":
                     return -1;
                 default:
-                    System.out.println("Opção inválida.");
                     return 0;
             }
 
@@ -91,28 +88,20 @@ class Calculadora {
     }
 
     String divide(){
-        try {
 
-            for (int i = 1; i < count; i++) {
-                if (nums[i] == 0) {
-                    oos.writeObject("Não pode ser feita divisão por 0.");
-                    oos.close();
-                    return "Divisão inválida.";
-                }
+        for (int i = 1; i < count; i++) {
+            if (nums[i] == 0) {
+                return "ERROR! Não pode ser feita divisão por 0.";
             }
-
-            int result = nums[0];
-
-            for (int i = 1; i < count; i++) {
-                result /= nums[i];
-            }
-
-            return Integer.toString(result);
-
-        } catch (IOException e){
-            e.printStackTrace();
-            return "ERRO!";
         }
+
+        int result = nums[0];
+
+        for (int i = 1; i < count; i++) {
+            result /= nums[i];
+        }
+
+        return Integer.toString(result);
     }
 
     void recebeNums(int idOps){
@@ -125,8 +114,8 @@ class Calculadora {
             String[] numeros = string.trim().split("\\s+");
 
             if (numeros.length > 20) {
-                oos.writeObject("A quantidade de números excedeu 20. Apenas os 20 primeiros números serão calculados.");
-                count = 20;
+                oos.writeObject("A quantidade de números excedeu 20.");
+                //count = 20;
             } else {
                 count = numeros.length;
             }
@@ -138,19 +127,15 @@ class Calculadora {
             switch (idOps) {
                 case 1:
                     oos.writeObject("\nResultado adição: " + soma());
-                    oos.close();
                     break;
                 case 2:
                     oos.writeObject("\nResultado subtração: " + subtrai());
-                    oos.close();
                     break;
                 case 3:
                     oos.writeObject("\nResultado multiplicação: " + multiplica());
-                    oos.close();
                     break;
                 case 4:
                     oos.writeObject("\nResultado divisão: " + divide());
-                    oos.close();
                     break;
             }
         } catch (IOException e){
@@ -179,12 +164,14 @@ class ConnectionHandler implements Runnable{
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
 
             Calculadora calculadora = new Calculadora(socket, oos, ois);
-            int ops;
-            ops = calculadora.menuOps();
+
+            int ops = calculadora.menuOps();
             calculadora.recebeNums(ops);
 
+            oos.close();
+            ois.close();
+            socket.close();
 
-            //socket.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
