@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="80f57504-698f-4b05-8c67-b0ce129c65de" name="Changes" comment="Calculadora sem uso de socket.">
+    <list default="true" id="80f57504-698f-4b05-8c67-b0ce129c65de" name="Changes" comment="Calculadora funcionando sem uso de socket.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/bk/Calculadora.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/calculadoraSocket/ClientSocketCalculadora.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/calculadoraSocket/ServerSocketCalculadora.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/calculadoraThreads/Calculadora.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/calculadoraLocal/Calculadora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/calculadoraLocal/Calculadora.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/clienteServidor/ClientSocketExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/clienteServidor/ClientSocketExample.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/clienteServidor/ServerSocketExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/clienteServidor/ServerSocketExample.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +49,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/MARCOS_VM/Documents/_desenv/Git/Sistema Distribuido em Socket/src/main/java/org/calculadoraThreads",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -51,7 +57,28 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\MARCOS_VM\Documents\_desenv\Git\Sistema Distribuido em Socket\src\main\java\org\calculadoraThreads" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.bk" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ClientSocketExample">
+    <configuration name="ClientSocketCalculadora" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.calculadoraSocket.ClientSocketCalculadora" />
+      <module name="Sistema-distribuido-socket" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.calculadoraSocket.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ClientSocketExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.clienteServidor.ClientSocketExample" />
       <module name="Sistema-distribuido-socket" />
@@ -65,12 +92,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.calculadoraLocal.Main" />
+    <configuration name="ServerSocketCalculadora" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.calculadoraSocket.ServerSocketCalculadora" />
       <module name="Sistema-distribuido-socket" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.calculadoraLocal.*" />
+          <option name="PATTERN" value="org.calculadoraSocket.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerSocketExample (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.clienteServidor.ServerSocketExample" />
+      <module name="Sistema-distribuido-socket" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.clienteServidor.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -93,8 +133,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.ClientSocketExample" />
+        <item itemvalue="Application.ServerSocketExample (1)" />
+        <item itemvalue="Application.ClientSocketCalculadora" />
+        <item itemvalue="Application.ServerSocketCalculadora" />
         <item itemvalue="Application.ServerSocketExample" />
       </list>
     </recent_temporary>
@@ -107,7 +149,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1689009135105</updated>
-      <workItem from="1689009136339" duration="9831000" />
+      <workItem from="1689009136339" duration="10053000" />
+      <workItem from="1689092080627" duration="11782000" />
     </task>
     <task id="LOCAL-00001" summary="Teste de comunicação cliente-servidor.">
       <created>1689011006926</created>
@@ -123,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689015356792</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Calculadora funcionando sem uso de socket.">
+      <created>1689020011551</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1689020011551</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +182,23 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Teste de comunicação cliente-servidor." />
     <MESSAGE value="Calculadora sem uso de socket." />
-    <option name="LAST_COMMIT_MESSAGE" value="Calculadora sem uso de socket." />
+    <MESSAGE value="Calculadora funcionando sem uso de socket." />
+    <option name="LAST_COMMIT_MESSAGE" value="Calculadora funcionando sem uso de socket." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/calculadoraSocket/ServerSocketCalculadora.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/calculadoraSocket/ClientSocketCalculadora.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

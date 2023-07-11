@@ -31,6 +31,12 @@ public class ClientSocketExample {
             ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
             String resposta = (String) ois.readObject();
             System.out.println("Servidor: " + resposta);
+
+            System.out.println("Cliente: " + message);
+            oos.writeObject(message);
+
+            resposta = (String) ois.readObject();
+            System.out.println("Servidor: " + resposta);
  
             ois.close();
             oos.close();
